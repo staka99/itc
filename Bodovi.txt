@@ -1,0 +1,122 @@
+-----------------------------------------------------------
+1. Ljuban Opacic - 2/22   -------------    15 bodova
+	- Nedostaje DNS server u konfiguraciji  --- 1
+	- Nije dobro povezano --- 1
+	- Nije odrađeno trunk za Gigabitne  --- 0.5
+	- Na S1 nije odrađen vlan za jedan server, pogrešan vlan za računar
+	- Nema ip adresa za vlanove  --- 2
+	- Pogrešna lozinka za console ---
+	- Port-security nije aktiviran --- 0.5
+	- access-liste --- 5
+	- ip routing nije aktiviran
+-----------------------------------------------------------
+2. Momčilo Maravić ---- 17 bodova
+	- Nema ip adresa za vlanove  --- 2
+	- nema lozinke za telnet --- 1
+	- access liste (4 fale, nema in/out i nema ip routing) --- 5
+-----------------------------------------------------------
+3. Nina Stojić  ---- 13.5 bodova
+	- Nedostaje DNS server u konfiguraciji  --- 1
+	- preostale uticnice --- 1
+	- nije aktiviran login za console ---
+	- ip routing i access liste ne postoje --- 7
+	- Nije odrađeno trunk za Gigabitne  --- 0.5
+	- port-security --- 2
+-----------------------------------------------------------
+4. 40/22        ---- 19 bodova
+	- DNS nije on  --- 0.5	
+	- Nema ip adresa za vlanove  --- 2
+	- Port-security nije aktiviran --- 0.5
+	- access liste i ip routing --- 3
+-----------------------------------------------------------
+5. Milan Rusovac 48/22 ------  25 bodova
+	- bez greske
+----------------------------------------------------------
+6. Luka Davidovic      ----- 21.5 bod
+	- Nedostaje DNS server u konfiguraciji  --- 1
+	- login za console --- 0.5
+	- access liste i ip routing --- 3
+-----------------------------------------------------------
+7. Đorđe Atanackov ----	20 bodova
+	- Nedostaje DNS server u konfiguraciji  --- 1
+	- DNS nije on  --- 0.5	
+	- vlan 1 nije up --- 1
+	- preostale utinice ---
+	- access liste nisu potpuno ok --- 
+	- Nema ip adresa za vlanove  --- 2
+	- Nije odrađeno trunk za Gigabitne  --- 0.5	
+-----------------------------------------------------------
+8. Milana Dangubic ----         18 bodova
+	- Nedostaje DNS server u konfiguraciji  --- 1	
+	- Nema ip adresa za vlanove  --- 2
+	- ip routing i poslednje 2 access liste --- 2
+-----------------------------------------------------------
+9. Uroš Drapšin         --- 17.5 bodova
+	- Nedostaje DNS server u konfiguraciji  --- 1	
+	- Nema ip adresa za vlanove  --- 2
+	- access liste (pravila, in/out) --- 4*
+	- Nije odrađeno trunk za Gigabitne  --- 0.5
+-----------------------------------------------------------
+10. Nataša Martić  ----  18 bodova
+	- Nema ip adresa za vlanove  --- 2
+	- preostale uticnice i uticnica za jedan server --- 1
+	- access liste --- 4
+-----------------------------------------------------------
+11. Jovana Savić ---   13 bodova
+	- pogrešno povezani switchevi
+	- Nedostaje DNS server u konfiguraciji  --- 1		
+	- Nema ip adresa za vlanove  --- 2
+	- ip adresa switcha i vlan 1 down --- 2
+	- lozinka za telnet --- 1
+	- access liste --- 6
+	- gigabitne uticnice ---
+-----------------------------------------------------------
+12. Vanja Markovic   --- 10 bodova
+	- ip konfugiracija netacna --- 2
+	- uticnice S1 --- 2
+	- vlan 1 za s2 down i nema ip adrese --- 1
+	- Nema ip adresa za vlanove  --- 2
+	- access liste --- 6
+	- port securty --- 2
+-----------------------------------------------------------
+13. Ognjen Ilibasic			21.5 boda
+	- nema putanje ka webu --- 0.5
+	- Nema ip adresa za vlanove  --- 2
+	- access liste (in i out i raspored) --- 1
+	
+-----------------------------------------------------------
+14. Nemanja Bognar       --- 10 bodova
+	- nema d.gateway-a i dns servera --- 1.5
+	- nema putanje ka webu --- 0.5
+	- vlan 1 down --- 1
+	- lozinka za telnet --- 1
+	- login za lozinku --- 1
+	- port-security --- 2
+	- Nema ip adresa za vlanove  --- 2
+	- access liste (in/out, ip routing) --- 6
+-----------------------------------------------------------
+15. Sanja Grujicic      --- 15.5 bodova
+	- nema putanje ka web --- 0.5
+	- preostale uticnice --- 1
+	- ip adrese vlanova --- 1
+	- access liste --- 5
+	- Nema ip adresa za vlanove  --- 2
+-----------------------------------------------------------
+ACCESS LISTE
+ip access-list extended out_ser_55
+ permit ip any any
+ip access-list extended out_rac_30
+ permit ip any 192.168.55.0 0.0.0.255
+ deny ip any any
+ip access-list extended in_rac_30
+ permit ip 192.168.55.0 0.0.0.255 any
+ip access-list extended in_ser_55
+ permit udp host 192.168.30.1 host 192.168.55.10 eq domain
+ permit udp host 192.168.30.2 host 192.168.55.10 eq domain
+ permit udp host 192.168.30.3 host 192.168.55.10 eq domain
+ permit tcp host 192.168.30.3 host 192.168.55.20 eq www
+ permit tcp host 192.168.30.2 host 192.168.55.20 eq www
+ permit tcp host 192.168.30.1 host 192.168.55.20 eq www
+ permit icmp host 192.168.30.1 host 192.168.55.10
+ permit icmp host 192.168.30.2 host 192.168.55.10
+ permit icmp host 192.168.30.3 host 192.168.55.20
